@@ -1,0 +1,45 @@
+namespace _02_CardWars
+{
+    using System;
+    using System.Numerics;
+    class CardWars
+    {
+        static void Main()
+        {
+            int n = int.Parse(Console.ReadLine());
+ 
+            int gamesFirstPlayer = 0;
+            int gamesSecondPlayer = 0;
+            int currentScoreFirstPlayer = 0;
+            int currentScoreSecondPlayer = 0;
+            BigInteger totalScoreFirstPlayer = 0;
+            BigInteger totalScoreSecondPlayer = 0;
+            bool xCardFirstPlayer = false;
+            bool xCardSecondPlayer = false;
+ 
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    string card = Console.ReadLine();
+                    switch (card)
+                    {
+                        case "2": currentScoreFirstPlayer += 10; break;
+                        case "3": currentScoreFirstPlayer += 9; break;
+                        case "4": currentScoreFirstPlayer += 8; break;
+                        case "5": currentScoreFirstPlayer += 7; break;
+                        case "6": currentScoreFirstPlayer += 6; break;
+                        case "7": currentScoreFirstPlayer += 5; break;
+                        case "8": currentScoreFirstPlayer += 4; break;
+                        case "9": currentScoreFirstPlayer += 3; break;
+                        case "10": currentScoreFirstPlayer += 2; break;
+                        case "A": currentScoreFirstPlayer += 1; break;
+                        case "J": currentScoreFirstPlayer += 11; break;
+                        case "Q": currentScoreFirstPlayer += 12; break;
+                        case "K": currentScoreFirstPlayer += 13; break;
+                        case "Z": totalScoreFirstPlayer *= 2; break;
+                        case "Y": totalScoreFirstPlayer -= 200; break;
+                        case "X": xCardFirstPlayer = true; break;
+                        default: break;
+                    }
+                }
