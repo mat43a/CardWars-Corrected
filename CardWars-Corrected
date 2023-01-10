@@ -43,3 +43,84 @@ namespace _02_CardWars
                         default: break;
                     }
                 }
+                for (int j = 0; j < 3; j++)
+                {
+                    string card = Console.ReadLine();
+                    switch (card)
+                    {
+                        case "2": currentScoreSecondPlayer += 10; break;
+                        case "3": currentScoreSecondPlayer += 9; break;
+                        case "4": currentScoreSecondPlayer += 8; break;
+                        case "5": currentScoreSecondPlayer += 7; break;
+                        case "6": currentScoreSecondPlayer += 6; break;
+                        case "7": currentScoreSecondPlayer += 5; break;
+                        case "8": currentScoreSecondPlayer += 4; break;
+                        case "9": currentScoreSecondPlayer += 3; break;
+                        case "10": currentScoreSecondPlayer += 2; break;
+                        case "A": currentScoreSecondPlayer += 1; break;
+                        case "J": currentScoreSecondPlayer += 11; break;
+                        case "Q": currentScoreSecondPlayer += 12; break;
+                        case "K": currentScoreSecondPlayer += 13; break;
+                        case "Z": totalScoreSecondPlayer *= 2; break;
+                        case "Y": totalScoreSecondPlayer -= 200; break;
+                        case "X": xCardSecondPlayer = true; break;
+                        default: break;
+                    }
+                }
+                if (xCardFirstPlayer && xCardSecondPlayer)
+                {
+                    totalScoreFirstPlayer += 50;
+                    totalScoreSecondPlayer += 50;
+                    xCardFirstPlayer = false;
+                    xCardSecondPlayer = false;
+                }
+                else if (xCardFirstPlayer || xCardSecondPlayer)
+                {
+                    break;
+                }
+                if (currentScoreFirstPlayer > currentScoreSecondPlayer)
+                {
+                    totalScoreFirstPlayer += currentScoreFirstPlayer;
+                    gamesFirstPlayer++;
+                }
+                else if (currentScoreFirstPlayer < currentScoreSecondPlayer)
+                {
+                    totalScoreSecondPlayer += currentScoreSecondPlayer;
+                    gamesSecondPlayer++;
+                }
+ 
+                currentScoreFirstPlayer = 0;
+                currentScoreSecondPlayer = 0;   
+            }
+ 
+            if (xCardFirstPlayer)
+            {
+                Console.WriteLine("X card drawn! Player one wins the match!");
+            }
+            else if (xCardSecondPlayer)
+            {
+                Console.WriteLine("X card drawn! Player two wins the match!");
+            }
+            else
+            {
+                if (totalScoreFirstPlayer == totalScoreSecondPlayer)
+                {
+                    Console.WriteLine("It's a tie!");
+                    Console.WriteLine("Score: {0}", totalScoreFirstPlayer);
+                }
+                else if (totalScoreFirstPlayer > totalScoreSecondPlayer)
+                {
+                    Console.WriteLine("First player wins!");
+                    Console.WriteLine("Score: {0}", totalScoreFirstPlayer);
+                    Console.WriteLine("Games won: {0}", gamesFirstPlayer);
+                }
+                else
+                {
+                    Console.WriteLine("Second player wins!");
+                    Console.WriteLine("Score: {0}", totalScoreSecondPlayer);
+                    Console.WriteLine("Games won: {0}", gamesSecondPlayer);
+                }
+            }
+        }
+    }
+}
